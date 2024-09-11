@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Scraping Tool</title>
+    <!-- Link to the CSS file in the static folder -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Web Scraping Tool</h1>
+        </header>
+
+        <main>
+            <form id="scraping-form" class="search-bar" method="post" action="/scrape">
+                <div class="input-group">
+                    <label for="user-input">Search Query:</label>
+                    <input type="text" id="user-input" name="query" placeholder="Type your search term here..." required>
+                </div>
+                <div class="input-group">
+                    <label for="file-format">File Format:</label>
+                    <select id="file-format" name="format" required>
+                        <option value="txt">Text (.txt)</option>
+                        <option value="docx">Word Document (.docx)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="file-name">File Name:</label>
+                    <input type="text" id="file-name" name="filename" placeholder="Type your file name..." required>
+                </div>
+
+                <!-- Grouping buttons side by side -->
+                <div class="button-group-container">
+                    <div class="button-group1">
+                        <button type="submit" id="scrape-button">Scrape Data</button>
+                    </div>
+                    <div class="button-group2">
+                        <button type="button" id="download-button" style="display:none;">Download Data</button>
+                    </div>
+                </div>
+            </form>
+
+            <section id="result" class="result">
+                <h2>Scraped Data:</h2>
+                <div id="output"></div>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2024 Web Scraping Tool. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Loading spinner -->
+    <div id="loading-spinner" style="display:none;">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Link to the JavaScript file in the static folder -->
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
